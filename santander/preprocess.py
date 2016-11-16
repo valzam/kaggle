@@ -53,13 +53,13 @@ def delete_cols_inplace(df):
 
 def fill_missings_inplace(df):
     imputations = {
-        "tiprel_1mes":"I",
+        "tiprel_1mes": "I",
         "conyuemp":0,
-        "renta":0,
-        "segmento":"PARTICULARES",
-        "ind_nom_pens_ult1":0,
-        "ind_recibo_ult1":0,
-        "ind_nomina_ult1":0
+        "renta": 0,
+        "segmento": "PARTICULARES",
+        "ind_nom_pens_ult1": 0,
+        "ind_recibo_ult1": 0,
+        "ind_nomina_ult1": 0
 
     }
 
