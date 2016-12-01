@@ -18,14 +18,14 @@ def create_sequence(df):
 
     for idx, user in enumerate(unique_ids):
         user_obs = df[df["ncodpers"] == user]
-        X_full = user_obs.drop(admin_cols, axis=1).values
-        y_full = user_obs[y_cols].values
+        X_user = user_obs.drop(admin_cols, axis=1).values
+        y_user = user_obs[y_cols].values
 
         # X are all values up to the second last month
         # y_train (the desired output) is are the product columns
         # of the month after the last training example
-        X.append(X_full[:-1])
-        y.append(y_full[-1])
+        X.append(X_user[:-1])
+        y.append(y_user[-1])
 
         if idx%100 == 0:
             print(idx)
