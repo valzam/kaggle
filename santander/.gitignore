@@ -1,3 +1,7 @@
 data/
 __pycache__/
 .idea/
+insights/.ipynb_checkpoints/
+insights/.~lock.data_desc.ods#
+insights/model.ipynb
+santander.iml
