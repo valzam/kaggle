@@ -28,13 +28,13 @@ def create_date_inplace(df):
     df["fecha_dato"] = pd.to_datetime(df["fecha_dato"])
 
 if __name__ == "__main__":
-    df = pd.read_pickle("data/training.pickle")
+    df = pd.read_pickle("../data/training_june_2015.pickle")
     truncate_outliers_inplace(df)
 
-    df_scaled = standardize(df)
+    df_scaled = df #standardize(df)
     df.drop(cols_to_scale, axis=1, inplace=True)
-    df = df.join(df_scaled)
+    #df = df.join(df_scaled)
 
     create_date_inplace(df)
 
-    df.to_pickle("data/training_transformed.pickle")
+    df.to_pickle("../data/training_june_2015.pickle")

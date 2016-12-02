@@ -5,6 +5,7 @@ from create_sequences import create_sequence
 from preprocess import cleanup_dataset
 from transform import truncate_outliers_inplace, create_date_inplace, cols_to_scale, standardize
 
+SUFFIX = "2016"
 
 raw_input_csv_file = "data/training_2016.csv"
 

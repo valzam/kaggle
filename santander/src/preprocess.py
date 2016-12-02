@@ -68,6 +68,6 @@ def fill_missings_inplace(df):
     print(pd.isnull(df).sum())
 
 if __name__ == "__main__":
-    df = pd.read_csv("data/training_sample.csv")
+    df = pd.read_csv("../data/training_june_2015.csv")
     df = cleanup_dataset(df)
-    df.to_pickle("data/training.pickle")
+    df.to_pickle("../data/training_june_2015.pickle")
