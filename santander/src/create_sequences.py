@@ -13,8 +13,11 @@ y_cols = ['ind_ahor_fin_ult1', 'ind_aval_fin_ult1', 'ind_cco_fin_ult1',
 def create_sequence(df):
     X = []
     y= []
+    X_full =[]
     admin_cols = ['fecha_dato', 'ncodpers']
     unique_ids = df["ncodpers"].unique()
+    processed_users = []
+    print(len(unique_ids))
 
     for idx, user in enumerate(unique_ids):
         user_obs = df[df["ncodpers"] == user]
@@ -25,23 +28,39 @@ def create_sequence(df):
         # y_train (the desired output) is are the product columns
         # of the month after the last training example
         X.append(X_user[:-1])
+        X_full.append(X_user)
         y.append(y_user[-1])
+
+        processed_users.append(user)
 
         if idx%100 == 0:
             print(idx)
 
-    return X, y
+        # Drop user rows to speed up later lookups
+        if idx%10000 == 0:
+            print("Dropping {0} users".format(len(processed_users)))
+            df = df[~df["ncodpers"].isin(processed_users)]
+            print("{0} rows left".format(len(df)))
+            processed_users = []
+
+    return X, y, unique_ids, X_full
 
 
 if __name__ == "__main__":
     df = pd.read_pickle("../data/training_transformed.pickle")
 
-    X_train, y_train = create_sequence(df)
+    X_train, y_train, ordered_ids, full_dataset = create_sequence(df)
     with open("../data/X_train.pickle", "wb") as handler:
         pickle.dump(X_train, handler)
 
     with open("../data/y_train.pickle", "wb") as handler:
         pickle.dump(y_train, handler)
+
+    with open("../data/training_ids.pickle", "wb") as handler:
+        pickle.dump(ordered_ids, handler)
+
+    with open("../data/training_full.pickle", "wb") as handler:
+        pickle.dump(full_dataset, handler)
 
     print(len(X_train))
     print(len(y_train))
