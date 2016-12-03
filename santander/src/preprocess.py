@@ -12,7 +12,7 @@ def cleanup_dataset(df):
     print("Deleting missings and unused cols")
     fill_missings_inplace(df)
     delete_cols_inplace(df)
-
+    print(df.dtypes)
     print("Binarizing")
     binary_features = binaryze(df)
     df.drop(cols_to_binarize, axis=1, inplace=True)
@@ -59,7 +59,8 @@ def fill_missings_inplace(df):
         "segmento": "PARTICULARES",
         "ind_nom_pens_ult1": 0,
         "ind_recibo_ult1": 0,
-        "ind_nomina_ult1": 0
+        "ind_nomina_ult1": 0,
+        "sexo": "H"
 
     }
 

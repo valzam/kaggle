@@ -48,11 +48,14 @@ def convert_to_names(arr, treshhold=1.0):
 def calculate_delta(t_1, t):
     deltas = []
     for idx, arr in enumerate(t_1):
-        t_1_products = np.array(arr[-1][2:26])
+        t_1_products = arr
         t_products = t[idx]
-        d = t_products - t_1_products
-        d[np.where(d > 0)] = 0
-        d[np.where(d == -1)] = 1
+        d = []
+        for idx, val in enumerate(t_products):
+            if val == 1 and t_1_products[idx] == 0:
+                d.append(1)
+            else:
+                d.append(0)
 
         deltas.append(d)
 
