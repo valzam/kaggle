@@ -14,7 +14,6 @@ y_train = np.array(pickle.load( open( "data/y_train.pickle", "rb" ) ))
 X_train =sequence.pad_sequences(X_train, maxlen=5, dtype='float')
 
 y_train = np.array(calculate_delta(X_train, y_train))
-print(y_train[0:100])
 
 # CONSTRUCT MODEL
 model = Sequential()
@@ -25,7 +24,8 @@ model.add(Dropout(0.2))
 model.add(Dense(y_train.shape[1], activation="softmax"))
 model.compile(loss="categorical_crossentropy", optimizer="adam")
 
-model.fit(X_train, y_train, nb_epoch=10, batch_size=512)
+model.fit(X_train, y_train, nb_epoch=10, batch_size=512, verbose=2)
 
 fp = "models/lstm_{0}_FULL".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print(fp)
 model.save(fp)

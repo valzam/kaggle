@@ -7,5 +7,4 @@ submissions/submission*
 models/lstm*
 .ipynb_checkpoints/create_submission-checkpoint.ipynb
 .ipynb_checkpoints/model-checkpoint.ipynb
-create_submission.ipynb
 
