@@ -10,5 +10,6 @@ X_submission = X_submission.merge(y_train, how="left", on="ncodpers")
 X_submission.fillna(0, inplace=True)
 X_submission.drop(["fecha_dato"], axis=1, inplace=True)
 X_submission.replace('         NA', 0, inplace=True)
+X_submission["renta"] = X_submission["renta"].astype("float")
 
 X_submission.to_pickle("data/x_submission_xgboost.pickle")
