@@ -3,6 +3,7 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 
 def create_multiclass_dataset(X_train, y_train):
+    print("Creating multiclass dataset")
     y_train["ncodpers"] = X_train["ncodpers"]
     y_train = y_train.set_index("ncodpers")
 

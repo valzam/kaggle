@@ -16,11 +16,11 @@ param['objective'] = 'multi:softprob'
 param['eta'] = 0.05
 param['max_depth'] = 8
 param['silent'] = 0
-param['num_class'] = 22
-param['eval_metric'] = "mlogloss",
+param['eval_metric'] = "mlogloss"
 param['min_child_weight'] = 1
-param['subsample'] = 0.7
-param['colsample_bytree'] = 0.7
+param['subsample'] = 0.5
+param['colsample_bytree'] = 0.5
+param['colsample_bylevel'] = 0.5
 param['seed'] = 323
 num_rounds = 100
 
