@@ -5,6 +5,7 @@ insights/.ipynb_checkpoints/
 insights/.~lock.data_desc.ods#
 submissions/submission*
 models/lstm*
+models/*.pickle
 models/xgboost*
 .ipynb_checkpoints/create_submission-checkpoint.ipynb
 .ipynb_checkpoints/model-checkpoint.ipynb

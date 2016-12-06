@@ -10,8 +10,8 @@ low_variance_cols_to_delete = ["conyuemp", "indresi", "indrel"]
 
 def cleanup_dataset(df):
     print("Deleting missings and unused cols")
-    fill_missings_inplace(df)
     delete_cols_inplace(df)
+    fill_missings_inplace(df)
     print(df.dtypes)
     print("Binarizing")
     binary_features = binaryze(df)
@@ -38,11 +38,7 @@ def binaryze(df):
 
 def dummyfy(df):
     cat_df = df[cols_to_dummyfy]
-    cat_dict = cat_df.T.to_dict().values()
-    vectorizer = DV(sparse=False)
-    dummy_features = pd.DataFrame(vectorizer.fit_transform(cat_dict))
-
-    dummy_features.columns = vectorizer.feature_names_
+    dummy_features = pd.get_dummies(cat_df)
 
     return dummy_features
 
@@ -69,6 +65,6 @@ def fill_missings_inplace(df):
     print(pd.isnull(df).sum())
 
 if __name__ == "__main__":
-    df = pd.read_csv("../data/training_june_2015.csv")
+    df = pd.read_csv("data/training_june_2015.csv")
     df = cleanup_dataset(df)
-    df.to_pickle("../data/training_june_2015.pickle")
+    df.to_pickle("data/training_june_2015.pickle")
