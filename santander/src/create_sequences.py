@@ -59,7 +59,7 @@ if __name__ == "__main__":
     with open("../data/training_ids.pickle", "wb") as handler:
         pickle.dump(ordered_ids, handler)
 
-    with open("../data/training_full.pickle", "wb") as handler:
+    with open("../data/training_submission.pickle", "wb") as handler:
         pickle.dump(full_dataset, handler)
 
     print(len(X_train))

@@ -8,7 +8,7 @@ import pickle
 
 MODEL_NAME = "lstm_2016-12-03 11:50:11_FULL"
 
-X = pickle.load( open( "data/training_full.pickle", "rb" ) )
+X = pickle.load( open( "data/training_submission.pickle", "rb" ) )
 ids = pickle.load( open( "data/training_ids.pickle", "rb" ) )
 test_ids = pd.read_csv("data/test_ver2.csv", usecols=[1])
 
